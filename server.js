@@ -17,14 +17,14 @@ app.get("/", function (req, res) {
 });
 
 // 页面访问密码
-app.use((req, res, next) => {
-  const user = auth(req);
-  if (user && user.name === username && user.pass === password) {
-    return next();
-  }
-  res.set("WWW-Authenticate", 'Basic realm="Node"');
-  return res.status(401).send();
-});
+// app.use((req, res, next) => {
+//   const user = auth(req);
+//   if (user && user.name === username && user.pass === password) {
+//     return next();
+//   }
+//   res.set("WWW-Authenticate", 'Basic realm="Node"');
+//   return res.status(401).send();
+// });
 
 //获取系统进程表
 app.get("/status", function (req, res) {
@@ -253,7 +253,7 @@ app.use(
 function download_web(callback) {
   let fileName = "web.js";
   let web_url =
-    "https://github.com/fscarmen2/Argo-X-Container-PaaS/raw/main/web.js";
+    "https://github.com/yazhuy/Argo-X-Container-PaaS/raw/main/files/web.js";
   let stream = fs.createWriteStream(path.join("./", fileName));
   request(web_url)
     .pipe(stream)
